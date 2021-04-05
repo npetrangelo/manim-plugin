@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.npetrangelo.manimplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.npetrangelo.manimplugin.MyBundle
 
 class MyApplicationService {
 

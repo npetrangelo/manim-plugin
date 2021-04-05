@@ -14,17 +14,18 @@ public class ManimSettingsEditor extends SettingsEditor<ManimRunConfiguration> {
     private LabeledComponent<ComponentWithBrowseButton> myMainClass;
 
     @Override
-    protected void resetEditorFrom(@NotNull ManimRunConfiguration s) {
+    protected void resetEditorFrom(ManimRunConfiguration demoRunConfiguration) {
 
     }
 
     @Override
-    protected void applyEditorTo(@NotNull ManimRunConfiguration s) throws ConfigurationException {
+    protected void applyEditorTo(ManimRunConfiguration demoRunConfiguration) throws ConfigurationException {
 
     }
 
+    @NotNull
     @Override
-    protected @NotNull JComponent createEditor() {
+    protected JComponent createEditor() {
         return myPanel;
     }
 
@@ -32,4 +33,5 @@ public class ManimSettingsEditor extends SettingsEditor<ManimRunConfiguration> {
         myMainClass = new LabeledComponent<ComponentWithBrowseButton>();
         myMainClass.setComponent(new TextFieldWithBrowseButton());
     }
+
 }

@@ -1,11 +1,12 @@
 <idea-plugin>
-    <id>com.github.npetrangelo.manimplugin</id>
-    <name>manim-plugin</name>
+    <id>manim-plugin</id>
+    <name>Manim</name>
     <vendor>npetrangelo</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>PythonCore</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.npetrangelo.manimplugin.services.MyApplicationService"/>

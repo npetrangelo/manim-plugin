@@ -1,5 +1,3 @@
-package com.github.npetrangelo.manimplugin;
-
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.ConfigurationFactory;

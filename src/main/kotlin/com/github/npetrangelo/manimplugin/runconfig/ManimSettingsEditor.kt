@@ -1,4 +1,4 @@
-package com.github.npetrangelo.manimplugin
+package com.github.npetrangelo.manimplugin.runconfig
 
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.options.SettingsEditor
@@ -7,9 +7,8 @@ import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.ui.components.fields.ExpandableTextField
 import com.intellij.ui.layout.panel
 import javax.swing.JComponent
-import javax.swing.JLabel
 
-class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimConfig>() {
+class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimRunConfig>() {
     private val fileText = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             "Select file",
@@ -20,12 +19,12 @@ class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimC
     }
     private val sceneText = ExpandableTextField()
 
-    override fun resetEditorFrom(m: ManimConfig) {
+    override fun resetEditorFrom(m: ManimRunConfig) {
         fileText.text = m.runConfigSettings.filePath
         sceneText.text = m.runConfigSettings.scene
     }
 
-    override fun applyEditorTo(m: ManimConfig) {
+    override fun applyEditorTo(m: ManimRunConfig) {
         m.runConfigSettings.filePath = fileText.text
         m.runConfigSettings.scene = sceneText.text
     }

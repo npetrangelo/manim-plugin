@@ -1,4 +1,4 @@
-package com.github.npetrangelo.manimplugin
+package com.github.npetrangelo.manimplugin.runconfig
 
 import com.intellij.execution.Executor
 import com.intellij.execution.configurations.ConfigurationFactory
@@ -10,12 +10,12 @@ import com.intellij.openapi.options.SettingsEditor
 import com.intellij.openapi.project.Project
 import org.jdom.Element
 
-class ManimConfig(
+class ManimRunConfig(
         project: Project,
         factory: ConfigurationFactory,
         name: String?
 ) : LocatableConfigurationBase<RunProfileState>(project, factory, name) {
-    var runConfigSettings = ManimConfigSettings()
+    var runConfigSettings = ManimRunConfigSettings()
 
     override fun getState(executor: Executor, environment: ExecutionEnvironment): RunProfileState? {
         return ManimRunState(this, environment)
@@ -44,7 +44,7 @@ class ManimConfig(
     /**
      * Must override clone so that a deep-copy of runConfigSettings is made when generating from template
      */
-    override fun clone() = (super.clone() as ManimConfig).apply {
+    override fun clone() = (super.clone() as ManimRunConfig).apply {
         runConfigSettings = runConfigSettings.clone()
     }
 }

@@ -1,10 +1,10 @@
-package com.github.npetrangelo.manimplugin
+package com.github.npetrangelo.manimplugin.runconfig
 
 import com.intellij.execution.configurations.CommandLineTokenizer
 import com.intellij.openapi.util.JDOMExternalizerUtil
 import org.jdom.Element
 
-data class ManimConfigSettings(
+data class ManimRunConfigSettings(
         var filePath: String = "",
         var scene: String = "",
         var arguments: String = ""
@@ -24,16 +24,16 @@ data class ManimConfigSettings(
     }
 
     fun readFromElement(element: Element) {
-        filePath = JDOMExternalizerUtil.readField(element, ManimConfigSettings::filePath.name).orEmpty()
-        scene = JDOMExternalizerUtil.readField(element, ManimConfigSettings::scene.name).orEmpty()
-        arguments = JDOMExternalizerUtil.readField(element, ManimConfigSettings::arguments.name).orEmpty()
+        filePath = JDOMExternalizerUtil.readField(element, ManimRunConfigSettings::filePath.name).orEmpty()
+        scene = JDOMExternalizerUtil.readField(element, ManimRunConfigSettings::scene.name).orEmpty()
+        arguments = JDOMExternalizerUtil.readField(element, ManimRunConfigSettings::arguments.name).orEmpty()
     }
 
     fun writeToElement(element: Element) {
-        JDOMExternalizerUtil.writeField(element, ManimConfigSettings::filePath.name, filePath)
-        JDOMExternalizerUtil.writeField(element, ManimConfigSettings::scene.name, scene)
-        JDOMExternalizerUtil.writeField(element, ManimConfigSettings::arguments.name, arguments)
+        JDOMExternalizerUtil.writeField(element, ManimRunConfigSettings::filePath.name, filePath)
+        JDOMExternalizerUtil.writeField(element, ManimRunConfigSettings::scene.name, scene)
+        JDOMExternalizerUtil.writeField(element, ManimRunConfigSettings::arguments.name, arguments)
     }
 
-    public override fun clone() = (super.clone() as ManimConfigSettings).apply {}
+    public override fun clone() = (super.clone() as ManimRunConfigSettings).apply {}
 }

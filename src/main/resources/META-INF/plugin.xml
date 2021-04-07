@@ -13,6 +13,7 @@
         <applicationService serviceImplementation="com.github.npetrangelo.manimplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.npetrangelo.manimplugin.services.MyProjectService"/>
         <configurationType implementation="com.github.npetrangelo.manimplugin.runconfig.ManimRunConfigType"/>
+        <runConfigurationProducer implementation="com.github.npetrangelo.manimplugin.ManimRunConfigProducer"/>
     </extensions>
 
     <applicationListeners>

@@ -5,6 +5,6 @@ import com.github.npetrangelo.manimplugin.MyBundle
 class MyApplicationService {
 
     init {
-        println(MyBundle.message("applicationService"))
+        println(MyBundle.msg("applicationService"))
     }
 }

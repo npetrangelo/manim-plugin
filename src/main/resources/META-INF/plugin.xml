@@ -12,7 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.npetrangelo.manimplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.npetrangelo.manimplugin.services.MyProjectService"/>
-        <configurationType implementation="ManimConfigurationType"/>
+        <configurationType implementation="com.github.npetrangelo.manimplugin.ManimConfigType"/>
     </extensions>
 
     <applicationListeners>

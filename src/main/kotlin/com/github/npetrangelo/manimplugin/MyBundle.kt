@@ -3,19 +3,20 @@ package com.github.npetrangelo.manimplugin
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
+import java.util.*
 
-@NonNls
-private const val BUNDLE = "messages.MyBundle"
 
-object MyBundle : AbstractBundle(BUNDLE) {
+object MyBundle {
+    @NonNls
+    internal const val BUNDLE_NAME = "messages.MyBundle"
+    private val BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME)
 
-    @Suppress("SpreadOperator")
-    @JvmStatic
-    fun message(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-        getMessage(key, *params)
-
-    @Suppress("SpreadOperator")
-    @JvmStatic
-    fun messagePointer(@PropertyKey(resourceBundle = BUNDLE) key: String, vararg params: Any) =
-        getLazyMessage(key, *params)
+    /**
+     * Retrieve property value from bundle file
+     *
+     * Ex: AhkBundle.msg("runconfig.configtab.scriptpath.label")
+     */
+    fun msg(@PropertyKey(resourceBundle = BUNDLE_NAME) key: String, vararg params: Any?): String {
+        return AbstractBundle.message(BUNDLE, key, *params)
+    }
 }

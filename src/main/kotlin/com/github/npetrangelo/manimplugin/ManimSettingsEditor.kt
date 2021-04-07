@@ -10,7 +10,6 @@ import javax.swing.JComponent
 import javax.swing.JLabel
 
 class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimConfig>() {
-    private val fileLabel = JLabel("File:")
     private val fileText = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
             "Select file",
@@ -19,7 +18,6 @@ class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimC
             FileChooserDescriptorFactory.createSingleFileDescriptor(".py")
         )
     }
-    private val sceneLabel = JLabel("Scene:")
     private val sceneText = ExpandableTextField()
 
     override fun resetEditorFrom(m: ManimConfig) {
@@ -33,7 +31,13 @@ class ManimSettingsEditor(private val project : Project) : SettingsEditor<ManimC
     }
 
     override fun createEditor(): JComponent = panel {
-        row { fileLabel; fileText; }
-        row { sceneLabel; sceneText; }
+        row {
+            label("Select file")
+            fileText()
+        }
+        row {
+            label("Select scene")
+            sceneText()
+        }
     }
 }

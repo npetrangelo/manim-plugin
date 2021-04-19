@@ -17,7 +17,6 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
             return null
         }
         if (element is PyReferenceExpression && element.text == "Scene") {
-            println(element)
             val actions: Array<AnAction> = ExecutorAction.getActions()
             val tooltipProvider = { psiElement: PsiElement ->
                 StringUtil.join(ContainerUtil.mapNotNull(actions) { action ->

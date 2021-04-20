@@ -16,7 +16,8 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
         if (element.containingFile.fileType !is PythonFileType) {
             return null
         }
-        if (element is PyReferenceExpression && element.text == "Scene") {
+        if (element is PyClass && isManimScene(element)) {
+            // TODO Get better actions
             val actions: Array<AnAction> = ExecutorAction.getActions()
             val tooltipProvider = { psiElement: PsiElement ->
                 StringUtil.join(ContainerUtil.mapNotNull(actions) { action ->
@@ -29,5 +30,16 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
             return Info(AllIcons.RunConfigurations.TestState.Run, tooltipProvider, actions)
         }
         return null
+    }
+
+    private fun isManimScene(pyClass: PyClass): Boolean {
+        pyClass.getSuperClasses(null).forEach {
+            if (it.text == "Scene" &&
+                it.containingFile.containingDirectory.parentDirectory!!.text.endsWith("manim")) {
+                return true
+            }
+            return isManimScene(it)
+        }
+        return false
     }
 }

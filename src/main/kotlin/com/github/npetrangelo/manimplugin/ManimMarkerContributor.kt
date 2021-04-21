@@ -18,6 +18,8 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
         }
         if (element is PyClass && isManimScene(element)) {
             // TODO Get better actions
+            // File path at element.containingFile.virtualFile.path
+            // Scene name at element.name
             val actions: Array<AnAction> = ExecutorAction.getActions()
             val tooltipProvider = { psiElement: PsiElement ->
                 StringUtil.join(ContainerUtil.mapNotNull(actions) { action ->

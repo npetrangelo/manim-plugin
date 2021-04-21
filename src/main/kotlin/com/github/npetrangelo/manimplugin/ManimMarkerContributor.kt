@@ -34,8 +34,9 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
 
     private fun isManimScene(pyClass: PyClass): Boolean {
         pyClass.getSuperClasses(null).forEach {
-            if (it.text == "Scene" &&
-                it.containingFile.containingDirectory.parentDirectory!!.text.endsWith("manim")) {
+            if (it.name == "Scene" &&
+                it.containingFile.containingDirectory.parentDirectory!!.name == "manim"
+            ) {
                 return true
             }
             return isManimScene(it)

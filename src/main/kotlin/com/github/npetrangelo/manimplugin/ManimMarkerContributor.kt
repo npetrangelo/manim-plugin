@@ -16,7 +16,7 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
         if (element.containingFile.fileType !is PythonFileType) {
             return null
         }
-        if (element is PyClass && isManimScene(element)) {
+        if (ManimUtil.isManimScene(element)) {
             // TODO Get better actions
             // File path at element.containingFile.virtualFile.path
             // Scene name at element.name
@@ -32,17 +32,5 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
             return Info(AllIcons.RunConfigurations.TestState.Run, tooltipProvider, actions)
         }
         return null
-    }
-
-    private fun isManimScene(pyClass: PyClass): Boolean {
-        pyClass.getSuperClasses(null).forEach {
-            if (it.name == "Scene" &&
-                it.containingFile.containingDirectory.parentDirectory!!.name == "manim"
-            ) {
-                return true
-            }
-            return isManimScene(it)
-        }
-        return false
     }
 }

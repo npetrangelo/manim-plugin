@@ -15,7 +15,8 @@ class ManimRunState(
     override fun startProcess(): ProcessHandler {
         val filePath = manimRunConfig.runConfigSettings.filePath
         val scene = manimRunConfig.runConfigSettings.scene
-        val cmd = GeneralCommandLine("manim", filePath, scene)
+        val flags = if (manimRunConfig.runConfigSettings.playback) "-p" else ""
+        val cmd = GeneralCommandLine("manim", filePath, scene, flags)
         return KillableProcessHandler(cmd)
     }
 }

@@ -7,6 +7,7 @@ import org.jdom.Element
 data class ManimRunConfigSettings(
         var filePath: String = "",
         var scene: String = "",
+        var playback: Boolean = false,
         var arguments: String = ""
 ) : Cloneable {
     /**

@@ -23,6 +23,7 @@ class ManimRunConfigProducer : LazyRunConfigurationProducer<ManimRunConfig>() {
         config.name = "Render " + (sourceElement.get() as PyClass).name!!
         config.runConfigSettings.filePath = file.path
         config.runConfigSettings.scene = (sourceElement.get() as PyClass).name!!
+        config.runConfigSettings.playback = true
         return true
     }
 

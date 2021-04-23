@@ -20,6 +20,7 @@ class ManimRunConfigProducer : LazyRunConfigurationProducer<ManimRunConfig>() {
         val file = location.virtualFile ?: return false
         if (!ManimUtil.isManimScene(sourceElement.get())) return false
         if (context.module == null) return false
+        config.name = "Render " + (sourceElement.get() as PyClass).name!!
         config.runConfigSettings.filePath = file.path
         config.runConfigSettings.scene = (sourceElement.get() as PyClass).name!!
         return true

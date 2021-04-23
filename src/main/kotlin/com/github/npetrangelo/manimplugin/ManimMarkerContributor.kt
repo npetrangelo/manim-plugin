@@ -8,6 +8,7 @@ import com.intellij.openapi.util.text.StringUtil
 import com.intellij.psi.PsiElement
 import com.intellij.util.containers.ContainerUtil
 import com.jetbrains.python.PythonFileType
+import com.jetbrains.python.psi.PyClass
 
 
 object ManimMarkerContributor : RunLineMarkerContributor() {
@@ -16,19 +17,9 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
             return null
         }
         if (ManimUtil.isManimScene(element)) {
-            // TODO Get better actions
-            // File path at element.containingFile.virtualFile.path
-            // Scene name at element.name
-            val actions: Array<AnAction> = ExecutorAction.getActions()
-            val tooltipProvider = { psiElement: PsiElement ->
-                StringUtil.join(ContainerUtil.mapNotNull(actions) { action ->
-                    getText(
-                        action,
-                        psiElement
-                    )
-                }, "\n")
-            }
-            return Info(AllIcons.RunConfigurations.TestState.Run, tooltipProvider, *ExecutorAction.getActions(0))
+            return Info(AllIcons.RunConfigurations.TestState.Run,
+                {"[Manim] Render ${(element as PyClass).name}"},
+                *ExecutorAction.getActions(0))
         }
         return null
     }

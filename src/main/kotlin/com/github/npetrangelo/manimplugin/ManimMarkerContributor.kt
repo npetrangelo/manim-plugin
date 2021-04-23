@@ -8,7 +8,6 @@ import com.intellij.openapi.util.text.StringUtil
 import com.intellij.psi.PsiElement
 import com.intellij.util.containers.ContainerUtil
 import com.jetbrains.python.PythonFileType
-import com.jetbrains.python.psi.*
 
 
 object ManimMarkerContributor : RunLineMarkerContributor() {
@@ -29,7 +28,7 @@ object ManimMarkerContributor : RunLineMarkerContributor() {
                     )
                 }, "\n")
             }
-            return Info(AllIcons.RunConfigurations.TestState.Run, tooltipProvider, actions)
+            return Info(AllIcons.RunConfigurations.TestState.Run, tooltipProvider, *ExecutorAction.getActions(0))
         }
         return null
     }

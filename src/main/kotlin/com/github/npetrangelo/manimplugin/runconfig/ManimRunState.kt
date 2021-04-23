@@ -21,6 +21,8 @@ class ManimRunState(
     }
 
     private fun getFlags(settings: ManimRunConfigSettings): String {
-        return if (settings.playback) "-p" else ""
+        val playback = if (settings.playback) "p" else ""
+        val flags = "-$playback"
+        return if (flags == "-") "" else flags
     }
 }

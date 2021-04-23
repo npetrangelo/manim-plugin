@@ -27,6 +27,11 @@ class ManimRunConfigProducer : LazyRunConfigurationProducer<ManimRunConfig>() {
 
     override fun isConfigurationFromContext(config: ManimRunConfig,
                                             context: ConfigurationContext): Boolean {
-        TODO("Not yet implemented")
+        val location = context.location ?: return false
+        val file = location.virtualFile ?: return false
+        if (location.psiElement !is PyClass) return false
+        val sourceElement = location.psiElement as PyClass
+        val settings = config.runConfigSettings
+        return settings.filePath == file.path && settings.scene == sourceElement.name
     }
 }
